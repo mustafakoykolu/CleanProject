@@ -8,9 +8,9 @@ namespace CleanProject.Application.Contracts.Persistence;
 
 public interface IGenericRepository<T> where T : class
 {
-    Task<List<T>> CreateAsync(T entity);
-    Task<T> UpdateAsync(T entity);
-    Task<T> DeleteAsync(T entity);
+    Task CreateAsync(T entity);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(T entity);
     Task<T> GetByIdAsync(int id);
-    Task<T> GetAsync();
+    Task<IReadOnlyList<T>> GetAsync();
 }

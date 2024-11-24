@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CleanProject.Application.Contracts.Persistence;
+using CleanProject.Application.Exceptions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,15 @@ public class GetLeaveTypeDetailsHandler : IRequestHandler<GetLeaveTypeDetailsQue
         _leaveTypeRepository = leaveTypeRepository; 
 
     }
-    public Task<LeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
+    public async Task<LeaveTypeDetailsDto> Handle(GetLeaveTypeDetailsQuery request, CancellationToken cancellationToken)
     {
         //Query the database
-        var leaveTypeDetail = await _leaveTypeRepository.GetByIdAsync(request.Id);
-
+        var leaveType = await _leaveTypeRepository.GetByIdAsync(request.Id);
+        //verify record exists
+        if (leaveType == null)
+            throw new NotFoundException(nameof(LeaveType), request.Id);
         // convert data object to dto object
-        var data = _mapper.Map<LeaveTypeDetailsDto>( leaveTypeDetail);
+        var data = _mapper.Map<LeaveTypeDetailsDto>( leaveType);
 
         //return Dto object
         return data;

@@ -10,12 +10,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.0" />
+    <PackageReference Include="SendGrid" Version="9.29.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CleanProject.Application\CleanProject.Application.csproj" />
     <ProjectReference Include="..\CleanProject.Domain\CleanProject.Domain.csproj" />
-    <ProjectReference Include="CleanProject.Infrastructure\CleanProject.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,5 @@
-﻿using CleanProject.Application.Contracts.Persistence;
-using CleanProject.Domain.Common;
-using CleanProject.Persistence.DatabaseContext;
+﻿using CleanProject.Persistence.DatabaseContext;
+using CleanProject.Application.Contracts.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace CleanProject.Persistence.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly HrDatabaseContext _context;
 
-        public GenericRepository(HrDatabaseContext context) {
+        public GenericRepository(HrDatabaseContext context)
+        {
             _context = context;
         }
 
@@ -37,14 +37,13 @@ namespace CleanProject.Persistence.Repositories
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _context.Set<T>().AsNoTracking().FirstAsync(q => q.Id == id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public async Task UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-             
         }
     }
 }

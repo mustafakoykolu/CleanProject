@@ -1,6 +1,6 @@
-﻿using CleanProject.Application.Contracts.Persistence;
+﻿using CleanProject.Persistence.DatabaseContext;
+using CleanProject.Application.Contracts.Persistence;
 using CleanProject.Domain;
-using CleanProject.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,8 +18,7 @@ namespace CleanProject.Persistence.Repositories
 
         public async Task<bool> IsLeaveTypeUnique(string name)
         {
-           return await _context.LeaveTypes.AnyAsync(t => t.Name == name);
-
+            return await _context.LeaveTypes.AnyAsync(q => q.Name == name);
         }
     }
 }

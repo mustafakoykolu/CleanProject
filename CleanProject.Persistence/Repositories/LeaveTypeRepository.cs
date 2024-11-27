@@ -12,7 +12,8 @@ namespace CleanProject.Persistence.Repositories
 {
     public class LeaveTypeRepository : GenericRepository<LeaveType>, ILeaveTypeRepository
     {
-        public LeaveTypeRepository(HrDatabaseContext context) : base(context)
+        private readonly NutritionDatabaseContext _context;
+        public LeaveTypeRepository(NutritionDatabaseContext context) : base(context)
         {
         }
 

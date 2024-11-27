@@ -7,7 +7,7 @@ namespace CleanProject.Persistence.Repositories
 {
     public class LeaveAllocationRepository : GenericRepository<LeaveAllocation>, ILeaveAllocationRepository
     {
-        public LeaveAllocationRepository(HrDatabaseContext context) : base(context)
+        public LeaveAllocationRepository(NutritionDatabaseContext context) : base(context)
         {
         }
 

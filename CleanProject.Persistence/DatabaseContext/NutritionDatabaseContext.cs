@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace CleanProject.Persistence.DatabaseContext
 {
-    public class HrDatabaseContext : DbContext
+    public class NutritionDatabaseContext : DbContext
     {
-        public HrDatabaseContext(DbContextOptions<HrDatabaseContext> options) : base(options)
+        public NutritionDatabaseContext(DbContextOptions<NutritionDatabaseContext> options) : base(options)
         {
 
         }
@@ -24,7 +24,7 @@ namespace CleanProject.Persistence.DatabaseContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(HrDatabaseContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(NutritionDatabaseContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
 

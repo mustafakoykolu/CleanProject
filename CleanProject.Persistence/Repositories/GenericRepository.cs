@@ -11,9 +11,9 @@ namespace CleanProject.Persistence.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly HrDatabaseContext _context;
+        protected readonly NutritionDatabaseContext _context;
 
-        public GenericRepository(HrDatabaseContext context)
+        public GenericRepository(NutritionDatabaseContext context)
         {
             _context = context;
         }

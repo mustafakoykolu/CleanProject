@@ -7,8 +7,10 @@ namespace CleanProject.Persistence.Repositories
 {
     public class LeaveRequestRepository : GenericRepository<LeaveRequest>, ILeaveRequestRepository
     {
-        public LeaveRequestRepository(HrDatabaseContext context) : base(context)
+        private readonly NutritionDatabaseContext _context;
+        public LeaveRequestRepository(NutritionDatabaseContext context) : base(context)
         {
+            this._context = context;
         }
 
         public async Task<List<LeaveRequest>> GetLeaveRequestsWithDetails()
